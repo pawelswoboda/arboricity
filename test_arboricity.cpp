@@ -63,6 +63,26 @@ struct GridGraph : public Problem
   } 
 };
 
+struct Torus : public Problem
+{
+  Torus(int n, int m)
+    : Problem(n*m, 2*n*m)
+  {
+    // horizontal edges
+    for(int i=0; i<n; ++i) {
+      for(int j=0; j<m; ++j) {
+        this->AddEdge( i*m + j, ((i+1)%n)*m + j, 1);
+      }
+    }
+    // vertical edges
+    for(int i=0; i<n; ++i) {
+      for(int j=0; j<m; ++j) {
+        this->AddEdge( i*m + j, i*m + ((j+1)%m), 1);
+      }
+    }
+  } 
+};
+
 void TestDecomposition(Problem* P)
 {
 	int i, e, k;
@@ -112,9 +132,18 @@ int main()
 {
   // test grid graphs, arboricity should be two
   printf("Testing grid graphs\n");
-  for(int n=100; n<1000; n+=100) {
-    for(int m=100; m<1000; m+=100) {
+  for(int n=100; n<=1000; n+=100) {
+    for(int m=100; m<=1000; m+=100) {
       GridGraph G(n,m);
+      TestDecomposition(&G);
+    }
+  }
+
+  // test toroidal graphs, arboricity should be three
+  printf("Testing toroidal graphs\n");
+  for(int n=100; n<=1000; n+=100) {
+    for(int m=100; m<=1000; m+=100) {
+      Torus G(n,m);
       TestDecomposition(&G);
     }
   }

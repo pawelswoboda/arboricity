@@ -9,5 +9,5 @@ add_definitions(-march=native)
 add_library(arboricity arboricity.h spanning_forest.cpp solve.cpp undirected_graph.cpp maxflow-v3.04.src/graph.cpp maxflow-v3.04.src/maxflow.cpp )
 set_target_properties(arboricity PROPERTIES LINKER_LANGUAGE CXX)
 
-add_executable(test test.cpp)
-target_link_libraries(test arboricity)
+add_executable(test_arboricity test_arboricity.cpp)
+target_link_libraries(test_arboricity arboricity)
