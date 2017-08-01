@@ -1,4 +1,7 @@
 project(arboricity C CXX)
+set(arboricity_VERSION_MAJOR 0)
+set(arboricity_VERSION_MINOR 1)
+set(PROJECT_NAME arboricity)
 
 cmake_minimum_required(VERSION 2.8.12)
 
