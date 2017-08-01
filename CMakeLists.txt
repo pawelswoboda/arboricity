@@ -1,4 +1,4 @@
-project(arboricity C CXX)
+project(arboricity)
 set(arboricity_VERSION_MAJOR 0)
 set(arboricity_VERSION_MINOR 1)
 set(PROJECT_NAME arboricity)
